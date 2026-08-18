@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-08-18T16:14:20.175Z",
+  "updatedAt": "2026-08-18T17:32:33.799Z",
   "layoutVersion": 3,
   "stats": {
-    "total": 313,
+    "total": 311,
     "easy": 176,
-    "medium": 124,
-    "hard": 11,
+    "medium": 123,
+    "hard": 10,
     "byPlatform": {
-      "geeksforgeeks": 52,
+      "geeksforgeeks": 50,
       "leetcode": 261
     },
     "byLang": {
-      "python3": 17,
-      "Python3": 200,
+      "python3": 16,
+      "Python3": 199,
       "Unknown": 30,
       "MySQL": 15,
       "Java": 12,
@@ -31,7 +31,7 @@
       "String": 25,
       "Sliding Window": 2,
       "Untagged": 7,
-      "Depth-First Search": 2,
+      "Depth-First Search": 1,
       "Linked List": 8,
       "Tree": 10,
       "Bit Manipulation": 3,
@@ -40,11 +40,11 @@
       "Hash Table": 14,
       "Java": 1,
       "Dynamic Programming": 12,
-      "Graph": 5,
       "Two Pointers": 8,
       "Database": 15,
       "Data Manipulation": 15,
       "Bit": 3,
+      "Graph": 4,
       "Vectorization": 2,
       "Pandas": 3,
       "Higher Order Functions": 1,
@@ -57,7 +57,7 @@
   "meta": {
     "summary": "This \"solution\" appears to be a natural language prompt designed to generate a narrative analysis of LeetCode-style statistics.\n\n## Complexity\n- **Time:** O(1) — The logic processes a fixed-size set of summary statistics regardless of total problems solved.\n- **Space:** O(1) — The output and intermediate state are constrained to a few sentences and a small set of counters.\n\n## Correctness\n1. **Edge Case: Division by Zero/Empty Stats**\n   - **Input:** Total problems = 0.\n   - **Actual vs. Expected:** The current logic might attempt to calculate \"trends\" or \"ratios,\" leading to hallucinations or errors. It should explicitly handle the \"new user\" state.\n2. **Edge Case: Logical Date Anomaly**\n   - **Input:** Date \"11/8/2026\" (future date).\n   - **Actual vs. Expected:** The logic treats this as \"recent activity\" without validation. An industrial solution would flag this as invalid or cap the recency score.\n\n## Optimization\nThe current approach uses LLM-based inference for a task that is primarily deterministic. A strictly better approach for performance and consistency would be a **Rule-Based Template System** utilizing a scoring matrix for difficulty/topic ratios.\n- **Improved Complexity:** O(1) with significantly lower constant-time latency.\n\n## Code Quality\nThe most impactful improvement would be moving from a raw text prompt to a **structured data schema** (e.g., JSON) to ensure the input statistics are parsed reliably without risk of injection or formatting errors.",
     "summaryUpdatedAt": "2026-08-11T15:51:01.885Z",
-    "commitsSinceLastSummary": 7
+    "commitsSinceLastSummary": 8
   },
   "problems": [
     {
@@ -578,52 +578,6 @@
       ]
     },
     {
-      "platform": "geeksforgeeks",
-      "id": "gfg-geeks-island--170646",
-      "title": "Towers Reaching Both Stations",
-      "titleSlug": "geeks-island--170646",
-      "difficulty": "Medium",
-      "topic": "Breadth-First Search",
-      "tags": [
-        "Depth-First Search",
-        "Matrix",
-        "Breadth-First Search",
-        "Array",
-        "Graph",
-        "Hash Table"
-      ],
-      "canonical": null,
-      "readmeContent": "# Towers Reaching Both Stations\n\n**Platform:** GeeksForGeeks  |  **Difficulty:** Medium\n\n**Tags:** `DFS`, `Matrix`\n\n## Problem\n\nMy SubmissionsRefresh Time (IST)StatusMarksLangTest CasesCode2026-06-24 07:51:20Correct8python31112 / 1112View⏳...\n\n**Source:** https://www.geeksforgeeks.org/problems/geeks-island--170646/",
-      "code": "from collections import deque\nclass Solution:\n    def countCoordinates(self, mat):\n        n, m = len(mat), len(mat[0])\n        p, a = set(), set()\n        pq, aq = deque(), deque()\n        for r in range(n):\n            pq.append((r, 0)); p.add((r, 0))\n            aq.append((r, m-1)); a.add((r, m-1))\n        for c in range(m):\n            pq.append((0, c)); p.add((0, c))\n            aq.append((n-1, c)); a.add((n-1, c))\n        while pq:\n            r, c = pq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in p and mat[nr][nc] >= mat[r][c]:\n                    p.add((nr, nc)); pq.append((nr, nc))\n        while aq:\n            r, c = aq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in a and mat[nr][nc] >= mat[r][c]:\n                    a.add((nr, nc)); aq.append((nr, nc))\n        return len(p & a)",
-      "files": [
-        {
-          "path": "problems/gfg-geeks-island-170646/gfg-geeks-island-170646.py",
-          "content": "from collections import deque\nclass Solution:\n    def countCoordinates(self, mat):\n        n, m = len(mat), len(mat[0])\n        p, a = set(), set()\n        pq, aq = deque(), deque()\n        for r in range(n):\n            pq.append((r, 0)); p.add((r, 0))\n            aq.append((r, m-1)); a.add((r, m-1))\n        for c in range(m):\n            pq.append((0, c)); p.add((0, c))\n            aq.append((n-1, c)); a.add((n-1, c))\n        while pq:\n            r, c = pq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in p and mat[nr][nc] >= mat[r][c]:\n                    p.add((nr, nc)); pq.append((nr, nc))\n        while aq:\n            r, c = aq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in a and mat[nr][nc] >= mat[r][c]:\n                    a.add((nr, nc)); aq.append((nr, nc))\n        return len(p & a)"
-        },
-        {
-          "path": "problems/gfg-geeks-island-170646/README.md",
-          "content": "# Towers Reaching Both Stations\n\n**Platform:** GeeksForGeeks  |  **Difficulty:** Medium\n\n**Tags:** `DFS`, `Matrix`\n\n## Problem\n\nMy SubmissionsRefresh Time (IST)StatusMarksLangTest CasesCode2026-06-24 07:51:20Correct8python31112 / 1112View⏳...\n\n**Source:** https://www.geeksforgeeks.org/problems/geeks-island--170646/"
-        }
-      ],
-      "lang": {
-        "name": "python3",
-        "ext": "py",
-        "slug": "python3"
-      },
-      "runtime": null,
-      "memory": null,
-      "timestamp": 1782267680000,
-      "elapsedSeconds": 0,
-      "_requestAIReview": true,
-      "aiReview": "### Analysis\n\n**1. Complexity**\n*   **Time Complexity:** $O(N \\times M)$, where $N$ and $M$ are matrix dimensions. Each cell is visited at most once per BFS traversal.\n*   **Space Complexity:** $O(N \\times M)$ to store the sets (`p`, `a`) and the BFS queues.\n\n**2. Correctness**\nThe solution is correct. It successfully implements the logic for finding cells that can \"flow\" to two different boundaries (Top/Left and Bottom/Right) by reversing the problem: starting from the boundaries and moving to cells of equal or greater height. It correctly handles edge cases like $1 \\times 1$ or $1 \\times N$ matrices.\n\n**3. Concrete Optimisation**\nReplace the `set` of tuples with a **2D boolean array** (e.g., `visited = [[False]*m for _ in range(n)]`). Hashing tuples and managing set resizing is significantly slower than direct indexing in a pre-allocated list of lists. Additionally, refactor the BFS logic into a helper function to reduce code duplication.\n\n**4. Key Algorithmic Pattern**\n**Multi-source Breadth-First Search (BFS)** starting from the boundaries.",
-      "_aiProvider": "gemini",
-      "_aiModel": "gemini-3-flash-preview",
-      "pattern": "Multi-source BFS",
-      "notes": "",
-      "methods": [],
-      "manuallyEdited": false
-    },
-    {
       "id": "gfg-height-of-binary-tree",
       "platform": "geeksforgeeks",
       "title": "Height Of Binary Tree",
@@ -1100,9 +1054,12 @@
         "slug": "python3"
       },
       "tags": [
-        "Searching"
+        "Searching",
+        "Array",
+        "Binary Search",
+        "Two Pointers"
       ],
-      "topic": "Untagged",
+      "topic": "Searching",
       "code": "class Solution:\n    def findMin(self, arr):\n        l, r = 0, len(arr)-1\n        \n        while l < r:\n            mid = (l + r) // 2\n            if arr[mid] > arr[r]:\n                l = mid + 1\n            else:\n                r = mid\n        \n        return arr[l]",
       "files": [],
       "timestamp": 1782298700927,
@@ -1116,7 +1073,11 @@
       "manuallyEdited": false,
       "_committedPaths": [
         "problems/gfg-minimum-element-in-a-sorted-and-rotated-array3611/README.md"
-      ]
+      ],
+      "aiReview": "### Review\n**1. Complexity**\n*   **Time Complexity:** $O(\\log N)$, where $N$ is the number of elements. The search space is halved in each iteration.\n*   **Space Complexity:** $O(1)$, as it uses a constant amount of extra space.\n\n**2. Correctness**\nThe solution is correct for arrays with **unique elements**. It successfully handles:\n*   **Standard rotation:** (e.g., `[4, 5, 1, 2, 3]`).\n*   **No rotation:** (e.g., `[1, 2, 3, 4]`) where it correctly returns the first element.\n*   **Single element arrays.**\n\n**Edge Case:** If the array contains **duplicate elements** (e.g., `[10, 1, 10, 10, 10]`), the logic `arr[mid] > arr[r]` fails to distinguish which half to discard.\n\n**3. Optimization**\nTo make the algorithm robust against duplicates, add a check for equality:\n```python\nif arr[mid] > arr[r]:\n    l = mid + 1\nelif arr[mid] < arr[r]:\n    r = mid\nelse:\n    r -= 1 # Shrink search space linearly when values are equal\n```\n\n**4. Key Algorithmic Pattern**\n**Binary Search**: Specifically, modified binary search to find the \"inflection point\" or pivot in a rotated sorted array.",
+      "_aiProvider": "gemini",
+      "_aiModel": "gemini-3-flash-preview",
+      "pattern": "Binary Search"
     },
     {
       "id": "gfg-minimum-platforms-1587115620",
@@ -1335,62 +1296,6 @@
       "_committedPaths": [
         "problems/gfg-number-of-paths0926/README.md"
       ]
-    },
-    {
-      "id": "gfg-pacific-atlantic-water-flow",
-      "forceCommit": true,
-      "title": "Pacific Atlantic Water Flow",
-      "titleSlug": "pacific-atlantic-water-flow",
-      "difficulty": "Hard",
-      "topic": "Graph",
-      "tags": [
-        "Graph",
-        "Breadth-First Search",
-        "Depth-First Search"
-      ],
-      "canonical": null,
-      "readmeContent": "# Pacific Atlantic Water Flow\n\n**Platform:** GeeksForGeeks  |  **Difficulty:** Hard\n\n**Tags:** `Graph`, `DFS`, `BFS`, `Algorithms`\n\n## Problem\n\n\n\n**Source:** https://www.geeksforgeeks.org/problems/pacific-atlantic-water-flow/",
-      "code": "from collections import deque\nclass Solution:\n    def countCoordinates(self, mat):\n        # code here\n        ",
-      "files": [
-        {
-          "path": "problems/gfg-pacific-atlantic-water-flow/gfg-pacific-atlantic-water-flow.py",
-          "content": "from collections import deque\nclass Solution:\n    def countCoordinates(self, mat):\n        # code here\n        "
-        },
-        {
-          "path": "problems/gfg-pacific-atlantic-water-flow/README.md",
-          "content": "# Pacific Atlantic Water Flow\n\n**Platform:** GeeksForGeeks  |  **Difficulty:** Hard\n\n**Tags:** `Graph`, `DFS`, `BFS`, `Algorithms`\n\n## Problem\n\n\n\n**Source:** https://www.geeksforgeeks.org/problems/pacific-atlantic-water-flow/"
-        }
-      ],
-      "lang": {
-        "name": "Python3",
-        "ext": "py",
-        "slug": "python3"
-      },
-      "runtime": null,
-      "memory": null,
-      "timestamp": 1782267680000,
-      "elapsedSeconds": 0,
-      "platform": "geeksforgeeks",
-      "_committedPaths": [
-        "problems/gfg-pacific-atlantic-water-flow/gfg-pacific-atlantic-water-flow-approach-1-python3.py",
-        "problems/gfg-pacific-atlantic-water-flow/README.md"
-      ],
-      "aiReview": "1.  **Time complexity (Big-O) and space complexity**\n    Time complexity: O(N*M), where N is the number of rows and M is the number of columns. Two BFS traversals each visit every cell and edge at most once. Set intersection is also O(N*M).\n    Space complexity: O(N*M) for storing the `p` and `a` sets and the `pq`, `aq` deques, which can hold up to all grid coordinates.\n\n2.  **Correctness — any edge cases that could fail?**\n    The core approach of performing two reverse BFS traversals from the Pacific and Atlantic borders is correct for identifying cells that can reach each ocean. The flow condition `mat[nr][nc] >= mat[r][c]` for reverse traversal is also correct.\n    **However, the solution fails to meet the problem's output requirement.** It returns `len(p & a)` (an integer count) instead of `list(p & a)` (a list of coordinates `[r, c]`). This is a critical error.\n\n3.  **One concrete optimisation if applicable**\n    The primary \"optimization\" is correcting the return type from `len(p & a)` to `list(p & a)` to match the problem's expected output. The two-BFS approach is already optimal for this problem.\n\n4.  **Key algorithmic pattern used**\n    Breadth-First Search (BFS), Graph Traversal.",
-      "_aiProvider": "gemini",
-      "_aiModel": "gemini-2.5-flash",
-      "notes": "",
-      "methods": [
-        {
-          "title": "Approach 1 (python3)",
-          "language": "python3",
-          "code": "from collections import deque\nclass Solution:\n    def countCoordinates(self, mat):\n        n, m = len(mat), len(mat[0])\n        p, a = set(), set()\n        pq, aq = deque(), deque()\n        for r in range(n):\n            pq.append((r, 0)); p.add((r, 0))\n            aq.append((r, m-1)); a.add((r, m-1))\n        for c in range(m):\n            pq.append((0, c)); p.add((0, c))\n            aq.append((n-1, c)); a.add((n-1, c))\n        while pq:\n            r, c = pq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in p and mat[nr][nc] >= mat[r][c]:\n                    p.add((nr, nc)); pq.append((nr, nc))\n        while aq:\n            r, c = aq.popleft()\n            for nr, nc in [(r-1, c), (r+1, c), (r, c-1), (r, c+1)]:\n                if 0 <= nr < n and 0 <= nc < m and (nr, nc) not in a and mat[nr][nc] >= mat[r][c]:\n                    a.add((nr, nc)); aq.append((nr, nc))\n        return len(p & a)",
-          "description": "Synced from submissions table — 2026-06-24 07:51:20",
-          "timestamp": 1782267680000
-        }
-      ],
-      "manuallyEdited": true,
-      "problemStatement": "<p><span style=\"font-size: 18px;\">You are given a matrix <strong>mat[][]</strong> of dimensions <strong>n x m</strong>, where mat[i][j] represents the <strong>height of a cell</strong> in a rectangular grid island. The <strong>Pacific Ocean</strong> touches the island's <strong>left and top</strong> borders, and the <strong>Atlantic Ocean</strong> touches the island's <strong>right and bottom</strong> borders. Rainwater can flow from a cell to its neighbouring cells in the directions North, South, East, and West, but only if the <strong>neighbouring cell has a height less than or equal to the current cell's height</strong>.</span></p>\n<p><span style=\"font-size: 18px;\">The task is to determine <strong>all coordinates (x, y)</strong> such that water can flow from the cell (x, y) to <strong>both</strong> the Pacific Ocean and the Atlantic Ocean. Water can flow from any adjacent cell directly into an ocean.</span></p>\n<p><span style=\"font-size: 18px;\"><strong>Examples:</strong></span></p>\n<pre><span style=\"font-size: 18px;\"><strong>Input: </strong>mat[][] = [[1, 2, 2, 3, 5],<br>                [3, 2, 3, 4, 4],<br>                [2, 4, 5, 3, 1],<br>                [6, 7, 1, 4, 5],<br>                [5, 1, 1, 2, 4]]\n<strong>Output:</strong> 7\n<strong>Explanation:</strong> </span><span style=\"font-size: 18px;\">In the given matrix, there are 7 coordinates through which the water can flow to both the Oceans</span>. They are  (0, 4), (1, 3), (1, 4), (2, 2), (3, 0), (3, 1), and (4, 0).</pre>\n<pre><span style=\"font-size: 18px;\"><strong>Input: </strong>arr[][] = [[2, 2], <br>               [2, 2]]\n<strong>Output:</strong> 4\n<strong>Explanation:</strong> </span><span style=\"font-size: 18px;\">In the following example, all cells allow water to flow to both the Oceans.</span></pre>\n<p><span style=\"font-size: 18px;\"><strong>Constraints:</strong><br>1 ≤ number of rows,&nbsp;</span><span style=\"font-size: 18px;\">number of columns</span><span style=\"font-size: 18px;\">&nbsp;≤ 10</span><sup>3<br></sup><span style=\"font-size: 18px;\">1 ≤ arr[i][j] ≤ 10<sup>3</sup>&nbsp;</span></p>",
-      "_requestAIReview": false
     },
     {
       "id": "gfg-parenthesis-checker2744",
