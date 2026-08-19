@@ -7,6 +7,15 @@
         "weakAreas": [
           "edge cases"
         ]
+      },
+      {
+        "hasTakeaway": true,
+        "summary": "The prompt effectively describes a string processing and generation task, emphasizing careful extraction of structured data from an unstructured text block before applying business logic.",
+        "ts": 1787081439702,
+        "weakAreas": [
+          "edge cases",
+          "null/empty input"
+        ]
       }
     ],
     "platform": "",
@@ -212,6 +221,22 @@
     "tags": []
   },
   "geeksforgeeks::buy-stock-2": {
+    "aiMetadataEdits": [
+      {
+        "fields": [
+          "topic",
+          "pattern"
+        ],
+        "ts": 1787075626238
+      }
+    ],
+    "aiReviews": [
+      {
+        "length": 988,
+        "providerId": "gemini",
+        "ts": 1787075626443
+      }
+    ],
     "difficulty": "Easy",
     "lang": {
       "ext": "txt",
@@ -237,6 +262,23 @@
     ]
   },
   "geeksforgeeks::c-matrix-rotation-by-180-degree0745": {
+    "aiMetadataEdits": [
+      {
+        "fields": [
+          "tags",
+          "topic",
+          "pattern"
+        ],
+        "ts": 1787075637679
+      }
+    ],
+    "aiReviews": [
+      {
+        "length": 878,
+        "providerId": "gemini",
+        "ts": 1787075637903
+      }
+    ],
     "difficulty": "Medium",
     "lang": {
       "ext": "txt",
@@ -262,6 +304,22 @@
     ]
   },
   "geeksforgeeks::camelcase-pattern-matching2259": {
+    "aiMetadataEdits": [
+      {
+        "fields": [
+          "topic",
+          "pattern"
+        ],
+        "ts": 1787075649356
+      }
+    ],
+    "aiReviews": [
+      {
+        "length": 1264,
+        "providerId": "gemini",
+        "ts": 1787075649547
+      }
+    ],
     "difficulty": "Medium",
     "lang": {
       "ext": "txt",
